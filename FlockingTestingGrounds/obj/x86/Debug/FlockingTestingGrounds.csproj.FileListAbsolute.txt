@@ -1,0 +1,48 @@
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\FlockingTestingGrounds.exe
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\FlockingTestingGrounds.pdb
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\obj\x86\Debug\FlockingTestingGrounds.csprojResolveAssemblyReference.cache
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\obj\x86\Debug\FlockingTestingGrounds.exe
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\obj\x86\Debug\FlockingTestingGrounds.pdb
+C:\Users\hampz\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\Content\circle.xnb
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\obj\x86\Debug\FlockingTestingGrounds.exe
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\obj\x86\Debug\FlockingTestingGrounds.pdb
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\Content\circle.xnb
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\FlockingTestingGrounds.exe
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\FlockingTestingGrounds.pdb
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Dodge This\OneDrive\VisualStudio\FlockingTestingGrounds\FlockingTestingGrounds\obj\x86\Debug\FlockingTestingGrounds.csprojResolveAssemblyReference.cache
