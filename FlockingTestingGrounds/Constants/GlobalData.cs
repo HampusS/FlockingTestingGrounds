@@ -15,7 +15,7 @@ namespace FlockingTestingGrounds.Constants
         public static float COHESIONMODIFIER = 10;
 
         //Lower value gives lower pull towards it
-        public static float DESTINATIONMODIFIER = 5;
+        public static float DESTINATIONMODIFIER = 1;
 
         //The distance keeping them apart
         public static float SEPARATIONDISTANCE = 15;

@@ -21,13 +21,24 @@ namespace FlockingTestingGrounds.GameObjects
         Random rnd;
         Color color;
 
+        Leader leader;
+        Predator pred;
+        float timer;
+
         public Flock(Texture2D texture, int flockSize)
         {
             this.texture = texture;
             this.flockSize = flockSize;
+            Initialize();
+        }
+
+        public void Initialize()
+        {
             flock = new List<Boid>();
             rnd = new Random();
             color = Color.White;
+            leader = new Leader(texture, new Vector2(200, 200), Color.Pink);
+            pred = new Predator(texture, new Vector2(400, 400), Color.Red);
             for (int i = 0; i < flockSize; i++)
             {
                 flock.Add(new Boid(texture, new Vector2(300 + rnd.Next(-100, 100), 300 + rnd.Next(-100, 100)), color));
@@ -36,30 +47,51 @@ namespace FlockingTestingGrounds.GameObjects
 
         public void Update(float time)
         {
+            timer += time;
             oldKbd = kbd;
             kbd = Keyboard.GetState();
             oldMouse = mouse;
             mouse = Mouse.GetState();
-
             if (kbd.IsKeyDown(Keys.A) && oldKbd.IsKeyUp(Keys.A))
                 GlobalData.AssembleFlock();
             else if (kbd.IsKeyDown(Keys.S) && oldKbd.IsKeyUp(Keys.S))
                 GlobalData.ScatterFlock();
+            else if (kbd.IsKeyDown(Keys.D))
+                Initialize();
 
             MoveAsFlock();
+            leader.Update(time);
+            pred.Update(time);
             foreach (Boid boid in flock)
             {
                 boid.Update(time);
+            }
+
+            if (pred.Hungering())
+            {
+                Vector2 temp = Vector2.Zero;
+                foreach (Boid b in flock)
+                {
+                    if (temp == Vector2.Zero)
+                        temp = b.myPosition;
+                    if (Vector2.Distance(temp, pred.myPosition) < Vector2.Distance(b.myPosition, pred.myPosition))
+                        temp = b.myPosition;
+                }
+
+                pred.myDirection = Vector2.Normalize((temp - pred.myPosition));
+                EatBoids(pred.myPosition);
             }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            leader.Draw(spriteBatch);
             foreach (Boid boid in flock)
             {
                 boid.Draw(spriteBatch);
             }
-            spriteBatch.Draw(texture, new Vector2(mouse.Position.X, mouse.Position.Y), null, Color.Pink, 0, new Vector2(texture.Width / 2, texture.Height / 2), 3, SpriteEffects.None, 1);
+            pred.Draw(spriteBatch);
+            //spriteBatch.Draw(texture, new Vector2(mouse.Position.X, mouse.Position.Y), null, Color.Red, 0, new Vector2(texture.Width / 2, texture.Height / 2), 3, SpriteEffects.None, 1);
         }
 
         public void MoveAsFlock()
@@ -71,24 +103,47 @@ namespace FlockingTestingGrounds.GameObjects
                 separation = GlobalData.m1 * ComputeSeparation(boid);
                 cohesion = GlobalData.m2 * ComputeCohesion(boid);
                 alignment = GlobalData.m3 * ComputeAlignment(boid);
-                destination = GlobalData.m4 * ComputeDestination(boid);
+                destination = GlobalData.m4 * ComputeDestination(leader.FuturePos);
 
-                boid.myVelocity = boid.myVelocity + separation + cohesion + alignment + destination;
+                if (ScareFlock(pred.myPosition))
+                {
+                    alignment *= -1;
+                }
+
+                boid.myDirection += separation + cohesion + alignment + destination;
+            }
+
+        }
+
+        public void EatBoids(Vector2 other)
+        {
+            for (int i = flock.Count - 1; i > 0; --i)
+            {
+                if (Vector2.Distance(flock[i].myPosition, other) < GlobalData.SEPARATIONDISTANCE * 2)
+                {
+                    //flock.RemoveAt(i);
+                    pred.Hunger--;
+                }
             }
         }
 
+        public bool ScareFlock(Vector2 mouse)
+        {
+            foreach (Boid boid in flock)
+            {
+                if (Vector2.Distance(boid.myPosition, mouse) < GlobalData.SEPARATIONDISTANCE * 3)
+                    return true;
+            }
+            return false;
+        }
 
-
-        Vector2 ComputeDestination(Boid boid)
+        Vector2 ComputeDestination(Vector2 target)
         {
             Vector2 newPos = Vector2.Zero;
             foreach (Boid b in flock)
             {
-                if (b != boid)
-                {
-                    newPos = new Vector2(mouse.Position.X, mouse.Position.Y) - b.myPosition;
-                    newPos.Normalize();
-                }
+                newPos = target - b.myPosition;
+                newPos.Normalize();
             }
             return newPos / GlobalData.DESTINATIONMODIFIER;
         }
@@ -102,7 +157,7 @@ namespace FlockingTestingGrounds.GameObjects
                 if (b != boid)
                     averagePos += b.myPosition;
             }
-
+            averagePos += leader.myPosition;
             averagePos /= (flockSize - 1);
 
             return ((averagePos - boid.myPosition) / GlobalData.COHESIONMODIFIER);
@@ -131,33 +186,25 @@ namespace FlockingTestingGrounds.GameObjects
             {
                 if (b != boid)
                 {
-                    averageVelocity += b.myVelocity;
+                    averageVelocity += b.myDirection;
                 }
             }
-
             averageVelocity = averageVelocity / (flockSize - 1);
 
-            return (averageVelocity - boid.myVelocity) / GlobalData.ALIGNMENTMODIFIER;
+            return (averageVelocity - boid.myDirection) / GlobalData.ALIGNMENTMODIFIER;
         }
 
         public void AddBoid(Vector2 position)
         {
             flock.Add(new Boid(texture, position, Color.Red));
-            flockSize++;
         }
 
         public void ResetFlock()
         {
             foreach (Boid b in flock)
             {
-                b.myVelocity = Vector2.Zero;
+                b.myDirection = Vector2.Zero;
             }
-        }
-
-        public void RemoveBoid()
-        {
-            flock.RemoveAt(flockSize);
-            flockSize--;
         }
     }
 }

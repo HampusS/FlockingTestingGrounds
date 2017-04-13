@@ -42,6 +42,8 @@
     <Compile Include="Game1.cs" />
     <Compile Include="GameObjects\Boid.cs" />
     <Compile Include="GameObjects\Flock.cs" />
+    <Compile Include="GameObjects\Leader.cs" />
+    <Compile Include="GameObjects\Predator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Emitter.cs" />

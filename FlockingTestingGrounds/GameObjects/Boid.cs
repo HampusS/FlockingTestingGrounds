@@ -12,10 +12,10 @@ namespace FlockingTestingGrounds.GameObjects
 {
     class Boid
     {
-        Texture2D texture;
-        Vector2 position, velocity;
+        protected Vector2 position, direction;
+        protected Texture2D texture;
+        protected float speed;
         Emitter emitter;
-        float speed;
 
         int width, height;
 
@@ -25,10 +25,10 @@ namespace FlockingTestingGrounds.GameObjects
             set { position = value; }
         }
 
-        public Vector2 myVelocity
+        public Vector2 myDirection
         {
-            get { return velocity; }
-            set { velocity = value; }
+            get { return direction; }
+            set { direction = value; }
         }
 
         public Boid(Texture2D texture, Vector2 position, Color color)
@@ -41,19 +41,17 @@ namespace FlockingTestingGrounds.GameObjects
             height = GlobalData.screenHeight;
         }
 
-        public void Update(float time)
+        public virtual void Update(float time)
         {
             Bounds();
-            //velocity.Normalize();
-            position += velocity * speed * time;
+            position += direction * speed * time;
             emitter.position = position;
             emitter.Update(time);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             emitter.Draw(spriteBatch);
-            //spriteBatch.Draw(texture, position, color);
         }
 
         public void Bounds()
@@ -69,8 +67,8 @@ namespace FlockingTestingGrounds.GameObjects
                 position.Y = -5;
 
             int vLimit = 150;
-            if (velocity.Length() > vLimit)
-                velocity = (velocity / velocity.Length()) * vLimit;
+            if (direction.Length() > vLimit)
+                direction = (direction / direction.Length()) * vLimit;
         }
     }
 }
