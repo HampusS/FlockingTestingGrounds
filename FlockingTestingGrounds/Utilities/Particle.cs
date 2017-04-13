@@ -46,9 +46,9 @@ namespace FlockingTestingGrounds.Utilities
             spriteBatch.Draw(texture, position, null, color, 0, origin, 1 * lifeTime, SpriteEffects.None, 1);
         }
 
-        public void KillMe(int index)
+        public void KillMe(int amount)
         {
-            lifeTime = index;
+            lifeTime = amount;
         }
     }
 }

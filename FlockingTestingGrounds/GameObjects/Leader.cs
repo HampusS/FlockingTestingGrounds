@@ -26,12 +26,12 @@ namespace FlockingTestingGrounds.GameObjects
         public Leader(Texture2D texture, Vector2 position, Color color)
             : base(texture, position, color)
         {
-            this.texture = texture;
-            this.position = position;
+            this.m_texture = texture;
+            this.m_vPosition = position;
             this.color = color;
-            direction = new Vector2(0, 1);
+            m_vDirection = new Vector2(0, 1);
             rnd = new Random();
-            speed = 200;
+            m_fSpeed = 200;
         }
 
         public override void Update(float time)
@@ -39,20 +39,20 @@ namespace FlockingTestingGrounds.GameObjects
             SetWander();
             timer += time;
             Bounds();
-            position += direction * speed * time;
+            m_vPosition += m_vDirection * m_fSpeed * time;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, null, color, 0, new Vector2(texture.Width / 2, texture.Height / 2), 5, SpriteEffects.None, 1);
-            spriteBatch.Draw(texture, test, null, Color.Blue, 0, new Vector2(texture.Width / 2, texture.Height / 2), 2, SpriteEffects.None, 1);
+            spriteBatch.Draw(m_texture, m_vPosition, null, color, 0, new Vector2(m_texture.Width / 2, m_texture.Height / 2), 5, SpriteEffects.None, 1);
+            spriteBatch.Draw(m_texture, test, null, Color.Blue, 0, new Vector2(m_texture.Width / 2, m_texture.Height / 2), 2, SpriteEffects.None, 1);
         }
 
         public void SetWander()
         {
-            newVelocity = direction;
+            newVelocity = m_vDirection;
             newVelocity *= 150;
-            newVelocity += position;
+            newVelocity += m_vPosition;
 
             if (timer > 1.5f)
             {
@@ -62,9 +62,9 @@ namespace FlockingTestingGrounds.GameObjects
 
             newVelocity.X += (float)Math.Cos(angle) * 15;
             newVelocity.Y += (float)Math.Sin(angle) * 15;
-            direction = newVelocity - position;
+            m_vDirection = newVelocity - m_vPosition;
             test = newVelocity;
-            direction.Normalize();
+            m_vDirection.Normalize();
         }
 
         public float GetRandomClamped(float min, float max)

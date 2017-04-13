@@ -48,16 +48,7 @@ namespace FlockingTestingGrounds.GameObjects
         public void Update(float time)
         {
             timer += time;
-            oldKbd = kbd;
-            kbd = Keyboard.GetState();
-            oldMouse = mouse;
-            mouse = Mouse.GetState();
-            if (kbd.IsKeyDown(Keys.A) && oldKbd.IsKeyUp(Keys.A))
-                GlobalData.AssembleFlock();
-            else if (kbd.IsKeyDown(Keys.S) && oldKbd.IsKeyUp(Keys.S))
-                GlobalData.ScatterFlock();
-            else if (kbd.IsKeyDown(Keys.D))
-                Initialize();
+            InputKeys();
 
             MoveAsFlock();
             leader.Update(time);
@@ -83,6 +74,20 @@ namespace FlockingTestingGrounds.GameObjects
             }
         }
 
+        private void InputKeys()
+        {
+            oldKbd = kbd;
+            kbd = Keyboard.GetState();
+            oldMouse = mouse;
+            mouse = Mouse.GetState();
+            if (kbd.IsKeyDown(Keys.A) && oldKbd.IsKeyUp(Keys.A))
+                GlobalData.AssembleFlock();
+            else if (kbd.IsKeyDown(Keys.S) && oldKbd.IsKeyUp(Keys.S))
+                GlobalData.ScatterFlock();
+            else if (kbd.IsKeyDown(Keys.D))
+                Initialize();
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             leader.Draw(spriteBatch);
@@ -91,9 +96,11 @@ namespace FlockingTestingGrounds.GameObjects
                 boid.Draw(spriteBatch);
             }
             pred.Draw(spriteBatch);
-            //spriteBatch.Draw(texture, new Vector2(mouse.Position.X, mouse.Position.Y), null, Color.Red, 0, new Vector2(texture.Width / 2, texture.Height / 2), 3, SpriteEffects.None, 1);
         }
 
+        /// <summary>
+        /// Main function to update the entire flock
+        /// </summary>
         public void MoveAsFlock()
         {
             Vector2 separation, cohesion, alignment, destination;
@@ -115,6 +122,10 @@ namespace FlockingTestingGrounds.GameObjects
 
         }
 
+        /// <summary>
+        /// Sedates the hunger of predator whenever a collision occurs
+        /// </summary>
+        /// <param name="other"></param>
         public void EatBoids(Vector2 other)
         {
             for (int i = flock.Count - 1; i > 0; --i)
@@ -127,16 +138,26 @@ namespace FlockingTestingGrounds.GameObjects
             }
         }
 
-        public bool ScareFlock(Vector2 mouse)
+        /// <summary>
+        /// Scares the flock when a target draws near
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public bool ScareFlock(Vector2 target)
         {
             foreach (Boid boid in flock)
             {
-                if (Vector2.Distance(boid.myPosition, mouse) < GlobalData.SEPARATIONDISTANCE * 3)
+                if (Vector2.Distance(boid.myPosition, target) < GlobalData.SEPARATIONDISTANCE * 3)
                     return true;
             }
             return false;
         }
 
+        /// <summary>
+        /// Sets a target vector for the flock to follow
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns></returns>
         Vector2 ComputeDestination(Vector2 target)
         {
             Vector2 newPos = Vector2.Zero;
@@ -148,6 +169,11 @@ namespace FlockingTestingGrounds.GameObjects
             return newPos / GlobalData.DESTINATIONMODIFIER;
         }
 
+        /// <summary>
+        /// Calculates the cohesion for each boid to draw them near
+        /// </summary>
+        /// <param name="boid"></param>
+        /// <returns></returns>
         Vector2 ComputeCohesion(Boid boid)
         {
             Vector2 averagePos = Vector2.Zero;
@@ -163,6 +189,11 @@ namespace FlockingTestingGrounds.GameObjects
             return ((averagePos - boid.myPosition) / GlobalData.COHESIONMODIFIER);
         }
 
+        /// <summary>
+        /// Calculates the separation for each boid
+        /// </summary>
+        /// <param name="boid"></param>
+        /// <returns></returns>
         Vector2 ComputeSeparation(Boid boid)
         {
             Vector2 displacement = Vector2.Zero;
@@ -178,6 +209,11 @@ namespace FlockingTestingGrounds.GameObjects
             return displacement * GlobalData.SEPARATIONMODIFIER;
         }
 
+        /// <summary>
+        /// Calculates the alignment for every boid and gives an average direction
+        /// </summary>
+        /// <param name="boid"></param>
+        /// <returns></returns>
         Vector2 ComputeAlignment(Boid boid)
         {
             Vector2 averageVelocity = Vector2.Zero;
@@ -194,11 +230,18 @@ namespace FlockingTestingGrounds.GameObjects
             return (averageVelocity - boid.myDirection) / GlobalData.ALIGNMENTMODIFIER;
         }
 
+        /// <summary>
+        /// Adds a boid to the system
+        /// </summary>
+        /// <param name="position"></param>
         public void AddBoid(Vector2 position)
         {
             flock.Add(new Boid(texture, position, Color.Red));
         }
 
+        /// <summary>
+        /// Resets the flock by setting a 0 direction
+        /// </summary>
         public void ResetFlock()
         {
             foreach (Boid b in flock)
